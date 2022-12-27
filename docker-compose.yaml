@@ -1,0 +1,10 @@
+# docker compose file for database
+version: "3.9"
+
+services:
+   postgres-db:
+      build: ./pg_db
+      container_name: postgres-db
+      ports:
+         - "5432:5432"
+  
