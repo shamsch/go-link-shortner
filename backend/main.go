@@ -1,7 +1,21 @@
 package main
 
-import "fmt"	
+import (
+	"fmt"
+	"link-shortner/db"
+	"link-shortner/router"
+
+	"github.com/gofiber/fiber/v2"
+)	
 
 func main() {
-	fmt.Println("Hello, World!")
+	app := fiber.New()
+	db.InitDB()
+	app.Post("/create", func(c *fiber.Ctx) error {
+		fmt.Println("Creating a link")
+		router.CreateLink(c)
+		return nil
+	})
+	fmt.Println("Listening on port 3000")
+	app.Listen(":3000")
 }
