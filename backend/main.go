@@ -16,6 +16,11 @@ func main() {
 		router.CreateLink(c)
 		return nil
 	})
+	app.Get("/:shortUrl", func(c *fiber.Ctx) error {
+		fmt.Println("Getting the long link")
+		router.Redirect(c)
+		return nil
+	})
 	fmt.Println("Listening on port 3000")
 	app.Listen(":3000")
 }
