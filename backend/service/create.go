@@ -8,12 +8,21 @@ import (
 ) 
 
 func CreateShortenUrl(url string) string {
+	var existingUrl model.Link
+
+	db.DB.First(existingUrl, "url = ?", url)
+	
+	if existingUrl.Url == url {
+		fmt.Println("Link already exists")
+		return existingUrl.ShortUrl
+	}
+	
 	shortenUrl := util.RandString(8)
 	link := model.Link{
 		Url: url,
 		ShortUrl: shortenUrl,
 	}
-	//TODO: Check if shortUrl already exists
+
 	db.DB.Create(&link)
 	fmt.Println("Link Created")
 	return shortenUrl
