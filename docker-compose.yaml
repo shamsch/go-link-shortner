@@ -8,6 +8,16 @@ services:
       ports:
          - "5432:5432"
       volumes:
-        - /var/lib/postgresql/data 
+        - /var/lib/postgresql/data
+
+   go-api: 
+      build: ./backend
+      container_name: go-api
+      ports:
+         - "3000:3000"
+      depends_on:
+         - postgres-db
+      volumes:
+        - ./backend:/app
     
   
