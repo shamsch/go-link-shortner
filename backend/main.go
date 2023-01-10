@@ -6,10 +6,14 @@ import (
 	"link-shortner/router"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )	
 
 func main() {
 	app := fiber.New()
+
+	app.Use(cors.New())
+
 	db.InitDB()
 	app.Post("/create", func(c *fiber.Ctx) error {
 		fmt.Println("Creating a link")
