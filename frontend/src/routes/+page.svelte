@@ -35,7 +35,6 @@
 
 </script>
 
-<!-- svelte-ignore non-top-level-reactive-declaration -->
 <div class="container">
     <h1>Shorten Any Link</h1>
     <label for="url">URL</label>
