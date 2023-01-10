@@ -2,6 +2,12 @@
 // @ts-nocheck
     export let data;
 
+    const isValidUrl = (url) => {
+        const regex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+        return regex.test(url);
+    }
+    const validUrl = isValidUrl(data.props.url);
+
     const makeAValidUrl = (url) => {
         if (url.startsWith('http://') || url.startsWith('https://')) {
             return url;
@@ -10,18 +16,29 @@
     }
 
     const redirectUser = (url) => {
-        window.location.replace(makeAValidUrl(url));
+        try {
+            window.location.replace(makeAValidUrl(url));
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
     setTimeout(() => {
-        redirectUser(data.props.url);
+        if (validUrl){ 
+            redirectUser(data.props.url);
+        }
     }, 3000);
     
 </script>
   
 <div class="container">
-    <p> You are going to be redirected to <a href="{makeAValidUrl(data.props.url)}">{data.props.url}</a> </p>
-    <p> If you are not redirected, click <a href="{makeAValidUrl(data.props.url)}">here</a> </p>
+    {#if validUrl}
+        <p> You are going to be redirected to <a href="{makeAValidUrl(data.props.url)}">{data.props.url}</a> </p>
+        <p> If you are not redirected, click <a href="{makeAValidUrl(data.props.url)}">here</a> </p>
+    {:else}
+        <p> Invalid URL </p>
+    {/if}
 </div>
 
 <style>
