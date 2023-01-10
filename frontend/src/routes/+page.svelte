@@ -1,15 +1,41 @@
 <script>
+    // @ts-nocheck
     let url = '';
     let shortenedUrl = '';
 
+    const appendCurrentUrl = (url) => {
+        try {
+            return `${window.location.origin}/${url}`;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
     const handleSubmission = () => {
-        console.log('Submitted');
-        url = '';
-        shortenedUrl = 'https://www.google.com';
+        console.log(url);
+        const payload = {
+            url: url
+        }
+        fetch("http://localhost:3000/create", 
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            shortenedUrl = appendCurrentUrl(data.shortUrl);
+        })
     }
 
 </script>
 
+<!-- svelte-ignore non-top-level-reactive-declaration -->
 <div class="container">
     <h1>Shorten Any Link</h1>
     <label for="url">URL</label>
