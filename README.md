@@ -7,18 +7,18 @@ docker-compose up
 
 ## TODO 
 
-[x] - Make backend
+- [x] Make backend
 
-[x] - Make DB
+- [x] Make DB
 
-[x] - Make frontend
+- [x] Make frontend
 
-[x] - Make frontend communicate with backend
+- [x] Make frontend communicate with backend
 
-[x] - Dockerize backend
+- [x] Dockerize backend
 
-[ ] - Dockerize frontend
+- [ ] Dockerize frontend
 
-[x] - Dockerize database
+- [x] Dockerize database
 
-[ ] - Add a sample working video 
+- [ ] Add a sample working video 
