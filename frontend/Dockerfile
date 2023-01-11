@@ -1,4 +1,4 @@
-FROM node:alpine as build
+FROM node:alpine AS build
 
 # create a build for the svelte app and copy it to the nginx server
 
@@ -12,15 +12,7 @@ COPY . .
 
 RUN npm run build
 
-
-
-FROM nginx:alpine
-
-# serve the build from previous stage 
-
-COPY --from=build /app/public /usr/share/nginx/html
-
-EXPOSE 80
+ENTRYPOINT [ "node", "./build"] 
 
 
 

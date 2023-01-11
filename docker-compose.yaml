@@ -24,7 +24,7 @@ services:
       build: ./frontend
       container_name: svelte-app
       ports:
-         - "80:80"
+         - "8080:3000"
       depends_on:
          - go-api
       volumes:
