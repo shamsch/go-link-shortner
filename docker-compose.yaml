@@ -19,5 +19,15 @@ services:
          - postgres-db
       volumes:
         - ./backend:/app
+
+   svelte-app:
+      build: ./frontend
+      container_name: svelte-app
+      ports:
+         - "80:80"
+      depends_on:
+         - go-api
+      volumes:
+        - ./frontend:/app
     
   
