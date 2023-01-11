@@ -4,7 +4,7 @@ export async function load({ params, fetch }) {
 	let longUrl = 'invalid url';
 
 	try {
-        const res = await fetch(`http://localhost:3000/${shortUrl}`);
+        const res = await fetch(`http://go-api:3000/${shortUrl}`);
         const data = await res.json();
         longUrl = data.url;
     } catch (err) {

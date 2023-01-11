@@ -17,7 +17,7 @@
         const payload = {
             url: url
         }
-        fetch("http://localhost:3000/create", 
+        fetch("http://go-api:3000/create", 
         {
             method: "POST",
             headers: {
